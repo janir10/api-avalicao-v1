@@ -20,6 +20,25 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async () => {
-  return { hello: 'world' }
-})
+Route.group( () => {
+
+  Route.group( () => {
+    
+    Route.group( () => {
+       Route.post('store', 'DomainsController.store');
+       Route.post('show', 'DomainsController.show');
+       Route.post('destroy/:id', 'DomainsController.destroy');
+    }).prefix('/dominio')
+
+
+    Route.group( () => {
+      Route.post('store', 'CriteriosController.store');
+      Route.post('show', 'CriteriosController.show');
+      Route.post('destroy/:id', 'CriteriosController.destroy');
+   }).prefix('/criterio')
+
+
+  }).prefix('/v1')
+
+}).prefix('/api');
+
