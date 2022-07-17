@@ -15,16 +15,15 @@ export default class DomainsController {
 
         try{
 
-            const page = request.input('p_page', 1)
-            const limit = request.input('p_limit', 100)
-            const data = request.all()
+            
+            //const data = request.all()
 
-            let domain = Database.from(Domain.table).where('dominio', data.dominio);
+            let domain = Database.from(Domain.table);
             
             responseMSG.custom_error = false;
             responseMSG.status = true;
             if(domain)
-                responseMSG.data = await domain.paginate(page, limit);
+                responseMSG.data = await domain
             return await response.json(responseMSG);
             
 

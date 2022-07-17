@@ -26,7 +26,7 @@ Route.group( () => {
     
     Route.group( () => {
        Route.post('store', 'DomainsController.store');
-       Route.post('show', 'DomainsController.show');
+       Route.get('show', 'DomainsController.show');
        Route.post('destroy/:id', 'DomainsController.destroy');
     }).prefix('/dominio')
 
